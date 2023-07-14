@@ -1,1 +1,39 @@
- 
+body {
+    margin: 0;
+  }
+  
+  .navbar {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* Empêche les éléments de passer à la ligne */
+  }
+  
+  #toggleBtn {
+    color: #fff;
+    background-color: #333;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  #navList {
+    display: none;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  #navList li {
+    display: inline; /* Affiche les liens sur la même ligne */
+    margin-top: 5px;
+    margin-right: 5px; /* Espacement horizontal de 5px */
+  }
+  
+  #navList li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
