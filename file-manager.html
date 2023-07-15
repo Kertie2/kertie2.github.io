@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestionnaire de fichiers | Administrateur</title>
+    <link rel="stylesheet" type="text/css" href="/css/file-manager.css">
+</head>
+<body>
+    <h1>Gestionnaire de fichiers</h1>
+
+    <div id="loginForm">
+        <h2>Connexion</h2>
+        <input type="text" id="username" placeholder="Nom d'utilisateur">
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="login()">Se connecter</button>
+    </div>
+
+    <div id="fileManager" style="display: none;">
+        <h2>Gestionnaire de fichiers | Admin</h2>
+        <div id="fileList">
+            <!-- Les fichiers seront ajoutés ici dynamiquement -->
+        </div>
+    </div>
+
+    <script src="file-manager.js"></script>
+</body>
+</html>
