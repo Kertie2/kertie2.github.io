@@ -97,8 +97,13 @@
 
   // Vérification si les champs ne sont pas vides
   if (username.trim() !== "" && password.trim() !== "") {
-    isLoggedIn = true; // Simulation de connexion réussie
+    continue
   }
+
+  if (username.trim() == "Dalia" && password.trim() == "Dalia") {
+    isLoggedIn = true
+  }
+    
 
   if (isLoggedIn) {
     document.getElementById("loginPage").style.display = "none";
