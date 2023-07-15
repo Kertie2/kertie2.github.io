@@ -156,27 +156,15 @@
       <li><a href="/a-propos.html">À propos</a></li>
       <li><a href="/contact.html">Contact</a></li>
       <li><a href="/partenaire.html">Partenaires</a></li>
-      <li><a href="/file-manager.html">Plateforme Administrateur</a></li>
+      <li><a href="/login.html">Plateforme Administrateur</a></li>
     </ul>
   </div>
 
-  <div class="container">
-    <h1>Gestionnaire de Fichiers</h1>
-    <div id="loginPage">
-      <h2>Connexion</h2>
-      <input type="text" id="username" placeholder="Nom d'utilisateur">
-      <input type="password" id="password" placeholder="Mot de passe">
-      <button onclick="login()">Se connecter</button>
-    </div>
-    <div id="fileManagerPage" style="display: none;">
-      <h2>Gestionnaire de Fichiers</h2>
-      <div>
-        <button onclick="createFile()">Créer un fichier</button>
-        <button onclick="uploadFile()">Téléverser un fichier</button>
-      </div>
-      <div id="fileList"></div>
-    </div>
-  </div>
+  <h1 class="h1>Connexion Administrateur</h1>
+  <form action="login.php" method="POST">
+    <input class="h1" type="text" name="username" placeholder="Nom d'utilisateur" required>
+    <input class="h1" type="password" name="password" placeholder="Mot de passe" required>
+    <button class="h1" type="submit">Se connecter</button>
 
   <div class="footer">
     &copy; 2023 Dalia. Tous droits réservés.
@@ -185,58 +173,6 @@
     document.getElementById('toggleBtn').addEventListener('click', function() {
       document.getElementById('navList').classList.toggle('open');
     });
-    function login() {
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
-  var isLoggedIn = false; // Variable pour vérifier la connexion
-
-  if (username.trim() == "Dalia" && password.trim() == "Dalia") {
-    isLoggedIn = true
-  }
-    
-
-  if (isLoggedIn) {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("fileManagerPage").style.display = "block";
-    loadFileList();
-  } else {
-    alert("Veuillez entrer un nom d'utilisateur et un mot de passe.");
-      }
-    }
-    
-    function loadFileList() {
-  var fileListContainer = document.getElementById("fileList");
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "get_files.php", true);
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var fileList = JSON.parse(xhr.responseText);
-      fileListContainer.innerHTML = "";
-
-      for (var i = 0; i < fileList.length; i++) {
-        var fileItem = document.createElement("div");
-        fileItem.innerHTML = fileList[i];
-
-        var downloadButton = document.createElement("button");
-        downloadButton.innerHTML = "Télécharger";
-        downloadButton.onclick = function () {
-          var fileName = this.parentNode.innerHTML;
-          downloadFile(fileName);
-        };
-
-        fileItem.appendChild(downloadButton);
-        fileListContainer.appendChild(fileItem);
-      }
-    }
-  };
-
-  xhr.send();
-}  
-    function downloadFile(fileName) {
-      window.open(fileName, "_blank");
-    }
   </script>
 </body>
 </html>
