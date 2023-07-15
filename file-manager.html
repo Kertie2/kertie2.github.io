@@ -91,51 +91,54 @@
   
   <script>
     function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      var isLoggedIn = true; // Simulation de connexion réussie
-      
-      if (isLoggedIn) {
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("fileManagerPage").style.display = "block";
-        loadFileList();
-      } else {
-        alert("Identifiants incorrects. Veuillez réessayer.");
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var isLoggedIn = false; // Variable pour vérifier la connexion
+
+  // Vérification si les champs ne sont pas vides
+  if (username.trim() !== "" && password.trim() !== "") {
+    isLoggedIn = true; // Simulation de connexion réussie
+  }
+
+  if (isLoggedIn) {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("fileManagerPage").style.display = "block";
+    loadFileList();
+  } else {
+    alert("Veuillez entrer un nom d'utilisateur et un mot de passe.");
       }
     }
     
     function loadFileList() {
-      var fileListContainer = document.getElementById("fileList");
-      
-      // Appel AJAX pour récupérer la liste des fichiers
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "get_files.php", true);
-      
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var fileList = JSON.parse(xhr.responseText);
-          fileListContainer.innerHTML = "";
-          
-          for (var i = 0; i < fileList.length; i++) {
-            var fileItem = document.createElement("div");
-            fileItem.innerHTML = fileList[i];
-            
-            var downloadButton = document.createElement("button");
-            downloadButton.innerHTML = "Télécharger";
-            downloadButton.onclick = function() {
-              var fileName = this.parentNode.innerHTML;
-              downloadFile(fileName);
-            };
-            
-            fileItem.appendChild(downloadButton);
-            fileListContainer.appendChild(fileItem);
-          }
-        }
-      };
-      
-      xhr.send();
+  var fileListContainer = document.getElementById("fileList");
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "get_files.php", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var fileList = JSON.parse(xhr.responseText);
+      fileListContainer.innerHTML = "";
+
+      for (var i = 0; i < fileList.length; i++) {
+        var fileItem = document.createElement("div");
+        fileItem.innerHTML = fileList[i];
+
+        var downloadButton = document.createElement("button");
+        downloadButton.innerHTML = "Télécharger";
+        downloadButton.onclick = function () {
+          var fileName = this.parentNode.innerHTML;
+          downloadFile(fileName);
+        };
+
+        fileItem.appendChild(downloadButton);
+        fileListContainer.appendChild(fileItem);
+      }
     }
-    
+  };
+
+  xhr.send();
+}  
     function downloadFile(fileName) {
       window.open(fileName, "_blank");
     }
