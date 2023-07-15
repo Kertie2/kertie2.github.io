@@ -64,54 +64,35 @@
     }
     
     function loadFileList() {
-      var fileList = ["fichier1.txt", "fichier2.png", "fichier3.doc"];
       var fileListContainer = document.getElementById("fileList");
-      fileListContainer.innerHTML = "";
       
-      for (var i = 0; i < fileList.length; i++) {
-        var fileItem = document.createElement("div");
-        fileItem.innerHTML = fileList[i];
-        
-        var editButton = document.createElement("button");
-        editButton.innerHTML = "Modifier";
-        editButton.onclick = function() {
-          var fileName = this.parentNode.innerHTML;
-          editFile(fileName);
-        };
-        
-        var downloadButton = document.createElement("button");
-        downloadButton.innerHTML = "Télécharger";
-        downloadButton.onclick = function() {
-          var fileName = this.parentNode.innerHTML;
-          downloadFile(fileName);
-        };
-        
-        fileItem.appendChild(editButton);
-        fileItem.appendChild(downloadButton);
-        fileListContainer.appendChild(fileItem);
-      }
-    }
-    
-    function createFile() {
-      var fileName = prompt("Entrez le nom du fichier :");
-      loadFileList();
-    }
-    
-    function editFile(fileName) {
-      var content = prompt("Modifiez le contenu du fichier :", fileName);
-      loadFileList();
-    }
-    
-    function uploadFile() {
-      var fileInput = document.createElement("input");
-      fileInput.type = "file";
+      // Appel AJAX pour récupérer la liste des fichiers
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "get_files.php", true);
       
-      fileInput.onchange = function() {
-        var file = fileInput.files[0];
-        loadFileList();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var fileList = JSON.parse(xhr.responseText);
+          fileListContainer.innerHTML = "";
+          
+          for (var i = 0; i < fileList.length; i++) {
+            var fileItem = document.createElement("div");
+            fileItem.innerHTML = fileList[i];
+            
+            var downloadButton = document.createElement("button");
+            downloadButton.innerHTML = "Télécharger";
+            downloadButton.onclick = function() {
+              var fileName = this.parentNode.innerHTML;
+              downloadFile(fileName);
+            };
+            
+            fileItem.appendChild(downloadButton);
+            fileListContainer.appendChild(fileItem);
+          }
+        }
       };
       
-      fileInput.click();
+      xhr.send();
     }
     
     function downloadFile(fileName) {
