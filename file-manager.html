@@ -1,28 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gestionnaire de fichiers | Administrateur</title>
-    <link rel="stylesheet" type="text/css" href="/css/file-manager.css">
+  <title>Gestionnaire de Fichiers</title>
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    input[type="text"], input[type="password"], button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+
+    #fileList {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Gestionnaire de fichiers</h1>
-
-    <div id="loginForm">
-        <h2>Connexion</h2>
-        <input type="text" id="username" placeholder="Nom d'utilisateur">
-        <input type="password" id="password" placeholder="Mot de passe">
-        <button onclick="login()">Se connecter</button>
+  <div class="container">
+    <h1>Gestionnaire de Fichiers</h1>
+    <div id="loginPage">
+      <h2>Connexion</h2>
+      <input type="text" id="username" placeholder="Nom d'utilisateur">
+      <input type="password" id="password" placeholder="Mot de passe">
+      <button onclick="login()">Se connecter</button>
     </div>
-
-    <div id="fileManager" style="display: none;">
-        <h2>Gestionnaire de fichiers | Admin</h2>
-        <div id="fileList">
-            <!-- Les fichiers seront ajoutés ici dynamiquement -->
-        </div>
-        <input type="file" id="fileInput">
-        <button onclick="uploadFile()">Télécharger</button>
+    <div id="fileManagerPage" style="display: none;">
+      <h2>Gestionnaire de Fichiers</h2>
+      <div>
+        <button onclick="createFile()">Créer un fichier</button>
+        <button onclick="uploadFile()">Téléverser un fichier</button>
+      </div>
+      <div id="fileList"></div>
     </div>
-
-    <script src="/js/file-manager.js"></script>
+  </div>
+  
+  <script>
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var isLoggedIn = true; // Simulation de connexion réussie
+      
+      if (isLoggedIn) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("fileManagerPage").style.display = "block";
+        loadFileList();
+      } else {
+        alert("Identifiants incorrects. Veuillez réessayer.");
+      }
+    }
+    
+    function loadFileList() {
+      var fileList = ["fichier1.txt", "fichier2.png", "fichier3.doc"];
+      var fileListContainer = document.getElementById("fileList");
+      fileListContainer.innerHTML = "";
+      
+      for (var i = 0; i < fileList.length; i++) {
+        var fileItem = document.createElement("div");
+        fileItem.innerHTML = fileList[i];
+        
+        var editButton = document.createElement("button");
+        editButton.innerHTML = "Modifier";
+        editButton.onclick = function() {
+          var fileName = this.parentNode.innerHTML;
+          editFile(fileName);
+        };
+        
+        var downloadButton = document.createElement("button");
+        downloadButton.innerHTML = "Télécharger";
+        downloadButton.onclick = function() {
+          var fileName = this.parentNode.innerHTML;
+          downloadFile(fileName);
+        };
+        
+        fileItem.appendChild(editButton);
+        fileItem.appendChild(downloadButton);
+        fileListContainer.appendChild(fileItem);
+      }
+    }
+    
+    function createFile() {
+      var fileName = prompt("Entrez le nom du fichier :");
+      loadFileList();
+    }
+    
+    function editFile(fileName) {
+      var content = prompt("Modifiez le contenu du fichier :", fileName);
+      loadFileList();
+    }
+    
+    function uploadFile() {
+      var fileInput = document.createElement("input");
+      fileInput.type = "file";
+      
+      fileInput.onchange = function() {
+        var file = fileInput.files[0];
+        loadFileList();
+      };
+      
+      fileInput.click();
+    }
+    
+    function downloadFile(fileName) {
+      window.open(fileName, "_blank");
+    }
+  </script>
 </body>
 </html>
