@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#loginForm {
+    width: 300px;
+    margin: 0 auto;
+}
+
+#loginForm input[type="text"], #loginForm input[type="password"], #loginForm button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#fileList {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
