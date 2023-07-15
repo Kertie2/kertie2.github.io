@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gestionnaire de Fichiers</title>
+  <title>Page Administrateur | Gestionnaire de fichier</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -27,9 +34,43 @@
       border: 1px solid #ccc;
       padding: 10px;
     }
+
+    .navbar {
+      background-color: #333;
+      padding: 10px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #navList {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #navList li {
+      margin-right: 10px;
+    }
+
+    #navList li a {
+      color: #fff;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+  <div class="navbar">
+    <ul id="navList">
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="/a-propos.html">À propos</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </div>
+
   <div class="container">
     <h1>Gestionnaire de Fichiers</h1>
     <div id="loginPage">
