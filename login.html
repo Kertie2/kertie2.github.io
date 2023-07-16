@@ -194,9 +194,6 @@
     &copy; 2023 Dalia. All rights reserved.
 
   <script>
-ocument.getElementById('toggleBtn').addEventListener('click', function() {
-      document.getElementById('navList').classList.toggle('open');
-
     function login() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
@@ -210,6 +207,8 @@ ocument.getElementById('toggleBtn').addEventListener('click', function() {
       } else {
         alert("Identifiants incorrects. Veuillez réessayer.");
       }
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+      document.getElementById('navList').classList.toggle('open');
     }
   </script>
 </body>
