@@ -152,6 +152,24 @@
       text-decoration: none;
     }
   </style>
+  <script>
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Effectuer des vérifications de connexion ici
+      // ...
+
+      // Rediriger vers une URL spécifique en cas de connexion réussie
+      if (username === "admin" && password === "DaliaSecure115@") {
+        window.location.href = "/backup/html/home/stop/slow/admin_home.html";
+      } else {
+        alert("Identifiants incorrects. Veuillez réessayer.");
+      }
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+      document.getElementById('navList').classList.toggle('open');
+    }
+  </script>
 </head>
 <body>
   <div class="navbar">
@@ -192,24 +210,6 @@
 
 <div class="footer">
     &copy; 2023 Dalia. All rights reserved.
-
-  <script>
-    function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-
-      // Effectuer des vérifications de connexion ici
-      // ...
-
-      // Rediriger vers une URL spécifique en cas de connexion réussie
-      if (username === "admin" && password === "DaliaSecure115@") {
-        window.location.href = "/backup/html/home/stop/slow/admin_home.html";
-      } else {
-        alert("Identifiants incorrects. Veuillez réessayer.");
-      }
-    document.getElementById('toggleBtn').addEventListener('click', function() {
-      document.getElementById('navList').classList.toggle('open');
-    }
-  </script>
+</div>
 </body>
 </html>
