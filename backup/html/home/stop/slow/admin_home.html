@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Administrateur | Connexion</title>
-  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <title>Page Administrateur | Acceuil</title>
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <style>
-        #navList.open {
+    #navList.open {
       display: block;
     }
     
@@ -132,25 +132,9 @@
       text-decoration: none;
     }
   </style>
-  <script>
-    function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-
-      // Effectuer des vérifications de connexion ici
-      // ...
-
-      // Rediriger vers une URL spécifique en cas de connexion réussie
-      if (username == "admin" && password == "DaliaSecure115@") {
-        window.location.href = "/backup/html/home/stop/slow/admin_home.html";
-      } else {
-        alert("Identifiants incorrects. Veuillez réessayer.");
-      }
-    }
-  </script>
-</head>
+  </head>
 <body>
-      <div class="navbar">
+  <div class="navbar">
     <button id="toggleBtn">&#9776;</button>
     <h2 class=h2>Dalia</h2>
     <a href="/"><svg width="132" height="32" viewBox="0 0 132 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -168,25 +152,34 @@
       </svg></a>
       <a href="/"><img src="/img/plaque imat.png" width="132" height="32"></a>
     <ul id="navList">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="/installation.html">Installer</a></li>
-      <li><a href="/a-propos.html">À propos</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-      <li><a href="/partenaire.html">Partenaires</a></li>
-      <li><a href="/login.html">Plateforme Administrateur</a></li>
+      <li><a href="https://kertie2.github.io/index.html">Accueil</a></li>
+      <li><a href="https://kertie2.github.io/installation.html">Installer</a></li>
+      <li><a href="https://kertie2.github.io/a-propos.html">À propos</a></li>
+      <li><a href="https://kertie2.github.io/contact.html">Contact</a></li>
+      <li><a href="https://kertie2.github.io/partenaire.html">Partenaires</a></li>
+      <li><a href="https://kertie2.github.io/login.html">Plateforme Administrateur</a></li>
     </ul>
   </div>
 
-  <div class="container">
-    <h1 class="h1">Connexion</h1>
-    <input class="h1" type="text" id="username" placeholder="Nom d'utilisateur">
-    <input class="h1" type="password" id="password" placeholder="Mot de passe">
-    <button class="h1" onclick="login()">Se connecter</button>
-  </div>
+    <h1 class="h1">Bienvenue, administrateur</h1><br><br>
+  <p class="h1">Vous êtes connecté en tant qu'administrateur. Vous pouvez accéder aux outils d'administration ici.</p><br><br>
 
+  <p class="h1">Accés Au Répertoire GitHub :<br><br> Adresse Mail : dalia-help@outlook.fr<br><br> Mot de passe : DaliaSecure115@<br><br></p>
+
+<a class="h1" href="https://github.com/Kertie2/Kertie2.github.io">Accès Répertoire Github</a>
+
+  <p class="h1">Accés A EmailJS :<br><br> Adresse Mail : dalia-help@outlook.fr<br><br> Mot de passe : DaliaSecure115@</p>
+
+  <a class="h1" href="https://dashboard.emailjs.com/sign-in">Accès EmailJS</a>
+  
   <div class="footer">
-    &copy; 2023 Dalia. All rights reserved.
+    &copy; 2023 Dalia. Tous droits réservés.
   </div>
+  <script>
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+      document.getElementById('navList').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
 
