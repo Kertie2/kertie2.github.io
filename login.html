@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Administrateur | Connexion</title>
+  <title>Page Administeur| Connexion</title>
   <style>
+    .container {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="text"], input[type="password"], button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+
     #navList.open {
       display: block;
     }
@@ -159,20 +179,37 @@
       <li><a href="/login.html">Plateforme Administrateur</a></li>
     </ul>
   </div>
-
-  <h1 class="h1>Connexion Administrateur</h1>
-  <form action="login.php" method="POST">
-    <input class="h1" type="text" name="username" placeholder="Nom d'utilisateur" required>
-    <input class="h1" type="password" name="password" placeholder="Mot de passe" required>
-    <button class="h1" type="submit">Se connecter</button>
-
-  <div class="footer">
-    &copy; 2023 Dalia. Tous droits réservés.
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="h1">Connexion</h1>
+    <input class="h1" type="text" id="username" placeholder="Nom d'utilisateur">
+    <input class="h1" type="password" id="password" placeholder="Mot de passe">
+    <button class="h1" onclick="login()">Se connecter</button>
   </div>
+
+<div class="footer">
+    &copy; 2023 Dalia. All rights reserved.
+
   <script>
-    document.getElementById('toggleBtn').addEventListener('click', function() {
+ocument.getElementById('toggleBtn').addEventListener('click', function() {
       document.getElementById('navList').classList.toggle('open');
-    });
+
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Effectuer des vérifications de connexion ici
+      // ...
+
+      // Rediriger vers une URL spécifique en cas de connexion réussie
+      if (username === "admin" && password === "DaliaSecure115@") {
+        window.location.href = "https://www.example.com/dashboard";
+      } else {
+        alert("Identifiants incorrects. Veuillez réessayer.");
+      }
+    }
   </script>
 </body>
 </html>
