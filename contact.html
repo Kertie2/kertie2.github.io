@@ -4,7 +4,6 @@
   <title>Contact | Dalia</title>
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     function sendEmail() {
       var name = document.getElementById("name").value;
@@ -160,12 +159,6 @@
 
     <label for="message">Message :</label>
     <textarea id="message" required></textarea><br>
-
-    <form class="h1" action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="6LexiDQnAAAAAFR6YWRo9IyZZxE4iThO82AsEy-R"></div>
-      <br/>
-      <input type="submit" value="Submit">
-    </form>
 
     <button class="send" type="button" onclick="sendEmail()">Envoyer</button>
   </form>
